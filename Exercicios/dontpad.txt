@@ -1,0 +1,423 @@
+# =======================================================================================================
+# cópia do http://dontpad.com/diurno_520
+# =======================================================================================================
+
+
+
+# =======================================================================================================
+# BASIC
+# =======================================================================================================
+#
+
+produtos = dict(produtos=dict(p1=dict(nome="Camiseta Star Wars", preco=99.90), p2=dict(nome='Caneca Ricky&Morty', preco=49.90), p3=dict(nome='Camiseta SpiderMan', preco=69.90)))
+
+
+#
+
+#!/usr/bin/python3
+# Isso é um comentário
+# """
+# Essa é a documentação do código:
+# """
+
+# print("Esse é um um código em python")
+
+# variavel = input('variavel: ')
+
+# print("mensagem",variavel)
+endereco = "rua vergueiro, 3057"
+
+# Métodos de string
+
+# print(endereco.capitalize())
+# print(endereco.count('e'))
+# print(endereco.upper())
+# print(endereco.lower())
+# print(endereco.split(' '))
+# print(endereco.replace('e', 'A'))
+
+# vdd = True
+# fal = False
+
+
+# print(vdd.numerator)
+# print(fal.numerator)
+
+
+# n1 = int(input('Digite o primeiro número: '))
+# n2 = int(input('Digite o segundo número: '))
+# print(n1 + n2)
+
+
+lista = ['teste', 'casa', ['n1', 'n2', 'n3']]
+# print(lista)
+# print(lista[5])
+# print(lista[2])
+# print(len(lista))
+# lista[0] = 'cachorro'
+# print(lista[2][1])
+
+# lista.append(145)
+# lista.insert(1, True)
+# lista.remove('casa')
+# lista.pop(2)
+# print(lista.count(145))
+# print(lista)
+
+# Tuplas 
+
+# linguagens = ('python', 'java', 'golang')
+
+# linguagens = ('python', 'java', 'golang')
+
+# print(linguagens)
+# print(linguagens[0])
+# print(linguagens[0].upper())
+
+# linguagens[1] = 'java'
+
+# carros = {'modelos': {'Fox', 'Fusca', 'Palio'},
+#           'anos': {2003, 1978, 2002}}
+
+# print(carros['modelos'])
+# print(carros['anos'])
+
+
+produtos = {'produtos': {'001': {'nome': 'Camiseta SpiderMan',
+                                 'preco': 99.90},
+                         '002': {'nome': 'Camiseta Star Wars',
+                                  'preco':79.90}
+                        }
+            }
+
+
+# print(produtos['produtos']['002']['preco'])
+
+# print(produtos.get('produtos').get('002'))
+
+
+produtos['produtos']['001']['preco'] = 29.90
+
+# print(produtos['produtos']['002'].keys())
+print(produtos['produtos']['002'].values())
+
+# =======================================================================================================
+# BASIC_EX
+# =======================================================================================================
+#
+
+# Faça um  que peça o seu nome
+# e imprima a seguinte saudação
+# Ola meu nome é nome
+
+# nome = input('Digite seu nome: ')
+# print('Meu nome é', nome)
+
+# Dado a lista:
+
+
+
+# times = [['Corinthians', 'Palmeiras', 'São Paulo'], ['Preto', 'Branco', 'Verde', 'Vermelho']]
+
+# imprima na tela as seguintes mensagens:
+
+# time: <nome_time>, cores: <cores_time>
+
+# for i in times[0]:
+#     for n in times[1]:
+#         if times[0][0] == 'Corinthians':
+#             cor1, cor2 = 'Preto', 'Branco'
+#             print(f'time: {i} Cores: {cor1} {cor2}')
+
+
+
+
+
+# print('time:', times[0][0], 'cores:', times[1][0], times[1][1])
+# print('time: {} Cores: {} {}'.format(times[0][1], times[1][2], times[1][1]))
+# print(f'time: {times[0][2]} Cores: {times[1][0]} {times[1][1]} {times[1][3]}')
+# dado o dicionario:
+
+dados = {
+    'estados' : {
+        'sp': {
+            'nome': 'São Paulo',
+            'municipios': 645,
+            'populacao': 44.04
+        },
+        'rj': {
+            'nome': 'Rio de Janeiro',
+            'municipios': 92,
+            'populacao': 16.72
+        },
+        'mg': {
+            'nome': 'Minas Gerais',
+            'municipios': 31,
+            'populacao': 20.87
+        }
+    }
+}
+
+# Imprima na tela as seguintes mensagens:
+
+# Estado: <nome_estado>
+# Municipios: <qnt_municipios>
+# Populacao: <qnt_populacao>
+
+
+# print(f"Estado: {dados['estados']['sp']['nome']}")
+# print(f"Municipios: {dados['estados']['sp']['municipios']}")
+# print(f"População: {dados['estados']['sp']['populacao']}")
+
+# print(f"Estado: {dados['estados']['rj']['nome']} \nMunicipios: {dados['estados']['rj']['municipios']} \nPopulação: {dados['estados']['rj']['populacao']}")
+
+for estado in dados['estados'].keys():
+    print(f"Estado: {dados['estados'][estado]['nome']}")
+    print(f"Municipios: {dados['estados'][estado]['municipios']}")
+    print(f"População: {dados['estados'][estado]['populacao']}")
+    print(' ')
+
+
+# =======================================================================================================
+# ESTRUTURA DE REPETIÇÃO
+# =======================================================================================================
+#
+
+# -*- coding: UTF-8 -*-
+
+# x = 1
+
+# while x < 10:
+#     print(x)
+#     x += 1
+
+# print('fim do while')
+
+
+usuarios = dict(renato='abacaxi123', carlos='fusca123', maria='teste321')
+bloqueados = []
+tentativas = 0
+
+import time
+
+
+def calcula_duracao(funcao):
+
+    def wrapper():
+        tempo_inicial = time.time()
+        funcao()
+        tempo_final = time.time()
+
+        print(f"[{funcao.__name__}] Tempo total de execução: {tempo_final - tempo_inicial}")
+
+    return wrapper
+
+
+@calcula_duracao
+def login():
+    while True:
+        login = input('Digite o seu usuario: ')
+        if login in usuarios:
+            senha = input('Digite sua senha: ')
+            if senha == usuarios[login]:
+                print('login efetuado!')
+                break
+            elif tentativas < 3:
+                print('Senha Incorreta!')
+                tentativas += 1
+                continue
+            else:
+                print('Usuário bloqueado, contate o administrador')
+                bloqueados.append(login)
+                usuarios.pop(login)
+                break
+        else:
+            print('Usuário não cadastrado')
+            continue
+
+login()
+
+# print(f'usuarios: {usuarios}')
+# print(f'usuarios bloqueados: {bloqueados}')
+
+
+# frutas = ['uva', 'banana', 'laranja']
+
+
+# for i,f in enumerate(frutas):
+#     print(i, f)
+
+
+# =======================================================================================================
+# DECORATOR
+# =======================================================================================================
+#
+
+import time
+
+
+def calcula_duracao(funcao):
+
+    def wrapper():
+        tempo_inicial = time.time()
+        funcao()
+        tempo_final = time.time()
+
+        print(f"[{funcao.__name__}] Tempo total de execução: {tempo_final - tempo_inicial}")
+
+    return wrapper
+
+
+@calcula_duracao
+def main():
+    for i in range(0, 1000000000):
+        pass
+
+
+main()
+
+
+# =======================================================================================================
+# CARROS
+# =======================================================================================================
+#
+volantes = ["volante esportivo", "volante normal"]
+motores = ["v8", "1.0", "1.6", "2.0"]
+print("Bem vindo ao monte seu carro!")
+print("Escolha seu volante: \n \t1- Volante Esportivo\n \t2- Volante Normal\n")
+volante = int(input(">>> "))
+try:
+    if volante == 1:
+
+        volante = volantes[0]
+    elif volante == 2:
+
+        volante = volantes[1]
+    else:
+        raise ValueError("Valor inexistente")
+except ValueError as v:
+    print(v)
+print(f"Volante selecionado: {volante}")
+print("Escolha seu motor: \n \t1- V8\n \t2- 1.0\n \t3- 1.6\n \t4- 2.0")
+motor = int(input(">>>"))
+try:
+    if motor == 1:
+
+        motor = motores[0]
+    elif motor == 2:
+
+        motor = motores[1]
+    elif motor == 3:
+
+        motor = motores[2]
+    elif motor == 4:
+
+        motor = motores[3]
+    else:
+        raise ValueError("Valor Incorreto!")
+except ValueError as v:
+    print(v)
+print(f"Motor selecionado: {motor}")
+portas = int(input("Digite a quantidade de portas: "))
+try:
+    if portas <= 4:
+        print(f"Quantidade de portas: {portas}")
+    else:
+        raise ValueError("Valor incorreto")
+except ValueError as v:
+    print(v)
+
+
+
+
+
+class Carro:
+    def __init__(self):
+        self.rodas = 4
+        self.volante = volante
+        self.motor = motor
+        self.portas = portas
+
+    def informacaoes(self):    
+        self.confCarros = {'Configuracao':{'volante': volante, 'motor':motor, 'portas': portas}} 
+        print(self.confCarros)
+    
+    def ligar(self):
+        print("Carro ligado")
+
+    def desligar(self):
+        print("Carro desligado")
+
+    def acelerar(self):
+        print("Acelerando")
+
+    def frear(self):
+        print("freando")
+
+
+Fiat_147 = Carro()
+
+Fiat_147.informacaoes()
+Fiat_147.ligar()
+
+
+# =======================================================================================================
+# OldBank
+# =======================================================================================================
+#
+contaBancaria.md    11/22/20191 / 
+
+1 Conta Bancaria em Orientação a Objetos
+
+O Banco OldBank precisa de um novo código que gerenciará a criação e movimentação das suas contas.
+Primeiramente precisamos criar uma classe que terá os atributos e métodos básicos de todas as contasbancarias, 
+são elas:
+
+atributos: número identificador do banco (valor fixado, banco número 999)
+número da conta
+agencia (valor fixado, pois o banco é digital e só possui uma, número 08)
+nome do cliente
+saldo
+
+métodos:
+
+depositar
+sacar
+extrato (mostra o número do banco, o número da agência, nome do cliente e o saldo)
+
+
+Em seguida precisamos criar as opções ex:print('OldBank')
+print('Bem vindo(a)!')
+print('Selecione a opção abaixo:')
+print('Para extrato digite 1')
+print('Para saque digite 2')
+print('Para deposito digite 3')e dependendo da opção selecionada, chame o método correspondente.
+
+
+
+# =======================================================================================================
+# LINKS
+# =======================================================================================================
+#
+
+https://pythonacademy.com.br/blog/domine-decorators-em-python
+
+https://we.tl/t-Pwx7PzKCJK
+
+https://shahriar.svbtle.com/underscores-in-python
+
+https://we.tl/t-UwppkAjw3R                  # RPG Game
+
+https://we.tl/t-EItEZ8Q1JP
+
+df = pd.read_csv('Dados.csv', sep=';')
+
+
+
+
+# =======================================================================================================
+
+
+
+
+
