@@ -7,7 +7,7 @@
 # 2 - sudo apt install mongodb
 # 3 -  mongo 
 # prompt=>  > 
-#
+# sair =>  ctrl + c 
 #
 #
 # 4 - sudo apt install virtualenv 
