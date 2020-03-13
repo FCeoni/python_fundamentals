@@ -18,3 +18,44 @@
 # 8 - create database projeto owner admin;
 
 # 
+
+#=============================================================================================
+#       aula#05 - 13/03/2020  - Python com SQLAlchemy - Abstração de DB como Framework
+#=============================================================================================
+
+
+# . /venv/bin/activate          # ativa a virtualenv
+
+# pip install sqlalchemy
+
+# sudo apt install sqlite3
+
+# sudo apt update
+
+# sudo apt install libsqlite3-dev
+
+# sudo apt install sqlitebrowser
+
+# criar pasta /app/core/core.py
+
+ # -*- coding: utf-8 -*-
+
+from sqlalchemy import (create_engine, MetaData, Column,
+                            Table, Integer,
+                            String, DateTime)
+
+from datetime import datetime
+
+engine = create_engine('sqlite:///banco.db', echo=True)
+metadata = MetaData(bind=engine
+user_table = Table('usuarios', 
+                    metadata,
+                        Colum('id', Integer, primary_key=True),
+                        Colum('nome', String(40), index=True),
+                        Colum('idade', Integer, nullabble=True),
+                        Colum('senha', String),
+                        Colum('criado em', DateTime, default=datetime.now),
+                        Colum('atualizado em', DateTime, onupdate=datetime.now)
+                        )
+
+metadata.create_all(engine)
